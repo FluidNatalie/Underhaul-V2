@@ -494,6 +494,7 @@ Recipe:get("personal-laser-defense-equipment"):setIngredients({
   {type= "item", name= "laser-turret", amount= 2}
 })
 
+Recipe:get("flying-robot-frame"):setEnergy(10)
 -- Gun turret. Reduce crafting time from 8s -> 1s
 Recipe:get("gun-turret"):setEnergy(1)
 
