@@ -22,13 +22,13 @@ local Tech = require "utils.tech"
 -- 3) 250R+G+B+P@30s, +70% speed -> 2.8x
 -- 4) 250R+G+B+P+Y@30s, +70% speed -> 3.5x
 Tech:get("research-speed-1"):setCost(250):setColors("RG"):setTime(30)
-    :setEffect({type="laboratory-speed", modifier=0.5})
+    :setEffects({{type="laboratory-speed", modifier=0.5}})
 Tech:get("research-speed-2"):setCost(250):setColors("RGB"):setTime(30)
-    :setEffect({type="laboratory-speed", modifier=0.6})
+    :setEffects({{type="laboratory-speed", modifier=0.6}})
 Tech:get("research-speed-3"):setCost(250):setColors("RGBP"):setTime(30)
-    :setEffect({type="laboratory-speed", modifier=0.7})
+    :setEffects({{type="laboratory-speed", modifier=0.7}})
 Tech:get("research-speed-4"):setCost(750):setColors("RGBP"):setTime(30)
-    :setEffect({type="laboratory-speed", modifier=0.7})
+    :setEffects({{type="laboratory-speed", modifier=0.7}})
 Tech:get("research-speed-5"):disable()
 Tech:get("research-speed-6"):disable()
 
@@ -88,11 +88,11 @@ Tech:get("mining-productivity-4"):setCostFormula("2000*(L-3)")
 -- 2) 400R+G+B+P@30s, +35%
 -- 3) 600R+G+B+P+Y@45s, +40% -> 2x
 Tech:get("braking-force-1"):setCost(200):setColors("RGB"):setTime(30)
-    :setEffect({type="train-braking-force-bonus", modifier=0.25})
+    :setEffects({{type="train-braking-force-bonus", modifier=0.25}})
 Tech:get("braking-force-2"):setCost(400):setColors("RGBP"):setTime(30)
-    :setEffect({type="train-braking-force-bonus", modifier=0.35})
+    :setEffects({{type="train-braking-force-bonus", modifier=0.35}})
 Tech:get("braking-force-3"):setCost(200):setColors("RGBP"):setTime(45)
-    :setEffect({type="train-braking-force-bonus", modifier=0.40})
+    :setEffects({{type="train-braking-force-bonus", modifier=0.40}})
 Tech:get("braking-force-4"):disable()
 Tech:get("braking-force-5"):disable()
 Tech:get("braking-force-6"):disable()
@@ -106,9 +106,9 @@ Tech:get("braking-force-7"):disable()
 -- 1) 200R+G+B@30s, +1
 -- 2) 400R+G+B+P+Y@45s, +2
 Tech:get("worker-robots-storage-1"):setCost(200):setColors("RGB"):setTime(30)
-    :setEffect({type="worker-robot-storage", modifier=1})
+    :setEffects({{type="worker-robot-storage", modifier=1}})
 Tech:get("worker-robots-storage-2"):setCost(400):setColors("RGBP"):setTime(45)
-    :setEffect({type="worker-robot-storage", modifier=2})
+    :setEffects({{type="worker-robot-storage", modifier=2}})
 Tech:get("worker-robots-storage-3"):disable()
 
 -- Worker robot speed. Original values:
@@ -128,14 +128,14 @@ Tech:get("worker-robots-storage-3"):disable()
 data.raw["construction-robot"]["construction-robot"].speed = 0.08
 data.raw["logistic-robot"]["logistic-robot"].speed = 0.08
 Tech:get("worker-robots-speed-1"):setCost(50):setColors("RGB"):setTime(30)
-    :setEffect({type="worker-robot-speed", modifier=0.40})
+    :setEffects({{type="worker-robot-speed", modifier=0.40}})
 Tech:get("worker-robots-speed-2"):setCost(150):setColors("RGB"):setTime(30)
-    :setEffect({type="worker-robot-speed", modifier=0.50})
+    :setEffects({{type="worker-robot-speed", modifier=0.50}})
 Tech:get("worker-robots-speed-3"):setCost(500):setColors("RGBP"):setTime(60):setPrerequisites({"production-science-pack","worker-robots-speed-2"})
-    :setEffect({type="worker-robot-speed", modifier=0.65})
+    :setEffects({{type="worker-robot-speed", modifier=0.65}})
 Tech:get("worker-robots-speed-4"):setColors("RGBPW"):setTime(60)
     :setCostFormula("2^(L-4)*500"):setInfinite():setPrerequisites({"space-science-pack","worker-robots-speed-3"})
-    :setEffect({type="worker-robot-speed", modifier=0.65})
+    :setEffects({{type="worker-robot-speed", modifier=0.65}})
 Tech:get("worker-robots-speed-5"):remove()
 Tech:get("worker-robots-speed-6"):remove()
 
@@ -245,7 +245,7 @@ Tech:get("weapon-shooting-speed-6"):disable()
 -- 3) 400R+G+B+M+Y@60s, grenade +60%, mine +60%, rocket +120%
 -- oo) 2^(L-4)*500 R+G+B+M+Y+W@60s, grenade +20%, mine +20%, rocket +50%
 Tech:get("stronger-explosives-1"):setCost(100):setColors("RG"):setTime(30)
-    :setEffect({type="ammo-damage", ammo_category="grenade", modifier=0.25})
+    :setEffects({{type="ammo-damage", ammo_category="grenade", modifier=0.25}})
 Tech:get("stronger-explosives-2"):setCost(200):setColors("RGBM"):setTime(60)
     :setEffects({
         {type="ammo-damage", ammo_category="grenade", modifier=0.40},
@@ -321,7 +321,7 @@ Tech:get("refined-flammables-7"):remove()
 -- 3) 500R+G+B+M+Y@60s, laser +110%, beam +70%, electric +70%
 -- oo) 2^7(L-4)*500 R+G+B+M+Y+W@60s, laser +70%, beam +30%, electric + 70%
 Tech:get("laser-weapons-damage-1"):setCost(200):setColors("RGBM"):setTime(30) --changed from energy to laser
-    :setEffect({type="ammo-damage", ammo_category="laser", modifier=0.40})
+    :setEffects({{type="ammo-damage", ammo_category="laser", modifier=0.40}})
 Tech:get("laser-weapons-damage-2"):setCost(300):setColors("RGBM"):setTime(30) --changed from energy to laser
     :setEffects({
         {type="ammo-damage", ammo_category="laser", modifier=0.80},
@@ -357,11 +357,11 @@ Tech:get("laser-weapons-damage-7"):remove()
 -- 2) 200R+G+B+M@60s, +70%
 -- 3) 400R+G+B+M+Y@60s, +110%
 Tech:get("laser-shooting-speed-1"):setCost(100):setColors("RGBM"):setTime(30)
-    :setEffect({type="gun-speed", ammo_category="laser", modifier=0.40})
+    :setEffects({{type="gun-speed", ammo_category="laser", modifier=0.40}})
 Tech:get("laser-shooting-speed-2"):setCost(200):setColors("RGBM"):setTime(60)
-    :setEffect({type="gun-speed", ammo_category="laser", modifier=0.70})
+    :setEffects({{type="gun-speed", ammo_category="laser", modifier=0.70}})
 Tech:get("laser-shooting-speed-3"):setCost(400):setColors("RGBM"):setTime(60)
-    :setEffect({type="gun-speed", ammo_category="laser", modifier=1.10})
+    :setEffects({{type="gun-speed", ammo_category="laser", modifier=1.10}})
 Tech:get("laser-shooting-speed-4"):remove()
 Tech:get("laser-shooting-speed-5"):remove()
 Tech:get("laser-shooting-speed-6"):remove()
@@ -386,5 +386,3 @@ Tech:get("follower-robot-count-5"):setColors("RGBMPW"):setInfinite()
 -- Fix for mining tech
 Tech:get("mining-productivity-3"):setColors("RGBMP"):setPrerequisites({"production-science-pack","mining-productivity-2"})
 Tech:get("mining-productivity-4"):setColors("RGBMPW"):setPrerequisites({"space-science-pack","mining-productivity-3"}):setInfinite()
-
-

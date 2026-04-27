@@ -896,7 +896,7 @@ Recipe:cloneInto("heavy-armor", "uh_heavy-armor-plus")
 local heavyArmorPlusTech = Tech:cloneInto("heavy-armor", "uh_heavy-armor-plus")
 Tech:get("uh_heavy-armor-plus"):setColors("R"):setCost(45):setTime(30)
 :setPrerequisites({"heavy-armor"})
-:setEffect({type="unlock-recipe", recipe="uh_heavy-armor-plus"})
+:setEffects({{type="unlock-recipe", recipe="uh_heavy-armor-plus"}})
 heavyArmorPlusTech.icons = {
   {
     icon = heavyArmorPlusTech.icon,
