@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.6.8
+Date: 13-06-2026
+  Compatibility:
+    - Quality mod is now playable but has no changes otherwise.
+---------------------------------------------------------------------------------------------------
+Version: 0.6.7
+Date: 04-05-2026
+  Bugfixes:
+    - Fixed the recipe for electronic engines
+    - Added the force back in
+---------------------------------------------------------------------------------------------------
 Version: 0.6.6
 Date: 27-04-2026
   Minor Features:

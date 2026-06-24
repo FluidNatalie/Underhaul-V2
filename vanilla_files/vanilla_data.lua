@@ -41,6 +41,12 @@ data.raw["recipe"]["steel-furnace"].enabled = true
 -- RECIPE CHANGES --
 --------------------
 
+Recipe:get("electric-engine-unit"):setIngredients({
+  {type= "item", name= "engine-unit", amount= 1},
+  {type= "item", name= "electronic-circuit", amount= 2},
+  {type= "fluid", name= "heavy-oil", amount= 15}
+})
+
 Recipe:get("boiler"):setIngredients({
   {type= "item", name= "pipe", amount= 4},
   {type= "item", name= "steel-furnace", amount= 1}
@@ -552,20 +558,19 @@ Tech:get("concrete"):setPrerequisites({"logistic-science-pack"})
 Tech:get("advanced-material-processing"):disable()
 Tech:get("personal-laser-defense-equipment"):setPrerequisites({"military-3","laser","power-armor","solar-panel-equipment","low-density-structure"})
 
-
+if not mods["quality"] then
 -- Change module tech to unlock the modules and then disable the originals
 Tech:get("modules"):setEffects({
   {type="unlock-recipe", recipe="efficiency-module"},
   {type="unlock-recipe", recipe="productivity-module"},
   {type="unlock-recipe", recipe="speed-module"}
 })
+end
+
 Tech:get("efficiency-module"):disable()
 Tech:get("productivity-module"):disable()
 Tech:get("speed-module"):disable()
--- Change module prerequisites
-Tech:get("efficiency-module-2"):setPrerequisites({"modules","processing-unit"})
-Tech:get("productivity-module-2"):setPrerequisites({"modules","processing-unit"})
-Tech:get("speed-module-2"):setPrerequisites({"modules","processing-unit"})
+
 -- Change module prerequisites
 Tech:get("destroyer"):setPrerequisites({"modules","military-4","distractor"})
 Tech:get("automation-3"):setPrerequisites({"modules","production-science-pack","electric-engine"})
@@ -717,31 +722,38 @@ data.raw["technology"]["engine"].icons = nil
 data.raw["technology"]["engine"].icon = "__underhaulV2__/graphics/technology/simple_engine.png"
 data.raw["technology"]["engine"].icon_size = 256
 
+if not mods["quality"] then
 -- Create the Modules 2 Tech
 Tech:get("speed-module-2"):setCost(150):setEffects({
   {type="unlock-recipe", recipe="speed-module-2"},
   {type="unlock-recipe", recipe="efficiency-module-2"},
   {type="unlock-recipe", recipe="productivity-module-2"}
 })
-Tech:get("productivity-module-2"):disable()
-Tech:get("efficiency-module-2"):disable()
-Tech:get("power-armor-mk2"):setPrerequisites({"power-armor","speed-module-2", "military-4"})
 data.raw["technology"]["speed-module-2"].icons = nil
 data.raw["technology"]["speed-module-2"].icon = "__underhaulV2__/graphics/technology/module_tech_2.png"
 data.raw["technology"]["speed-module-2"].icon_size = 256
+end
 
+Tech:get("productivity-module-2"):disable()
+Tech:get("efficiency-module-2"):disable()
+Tech:get("power-armor-mk2"):setPrerequisites({"power-armor","speed-module-2", "military-4"})
+
+if not mods["quality"] then
 -- Create the Modules 3 Tech
 Tech:get("speed-module-3"):setCost(1000):setEffects({
   {type="unlock-recipe", recipe="speed-module-3"},
   {type="unlock-recipe", recipe="efficiency-module-3"},
   {type="unlock-recipe", recipe="productivity-module-3"}
 })
-Tech:get("productivity-module-3"):disable()
-Tech:get("efficiency-module-3"):disable()
-Tech:get("spidertron"):setPrerequisites({"speed-module-3", "exoskeleton-equipment", "military-4", "fission-reactor-equipment", "radar", "rocketry"})
 data.raw["technology"]["speed-module-3"].icons = nil
 data.raw["technology"]["speed-module-3"].icon = "__underhaulV2__/graphics/technology/module_tech_3.png"
 data.raw["technology"]["speed-module-3"].icon_size = 256
+end
+
+Tech:get("productivity-module-3"):disable()
+Tech:get("efficiency-module-3"):disable()
+Tech:get("spidertron"):setPrerequisites({"speed-module-3", "exoskeleton-equipment", "military-4", "fission-reactor-equipment", "radar", "rocketry"})
+
 
 -- Logistic system. Reduce from 500R+G+B+Y@30s -> 400R+G+B+Y@30s
 Tech:get("logistic-system"):setCost(400)
@@ -804,9 +816,24 @@ Tech:get("fluid-handling"):setPrerequisites({"engine"})
 
 -- Change assembling mashine stats
 data.raw["assembling-machine"]["assembling-machine-2"].crafting_speed = 1
+data.raw["assembling-machine"]["assembling-machine-2"].energy_usage = "75kW"
+
+if not mods["quality"] then
 data.raw["assembling-machine"]["assembling-machine-2"].module_slots = 4
+end
+if mods["quality"] then
+data.raw["assembling-machine"]["assembling-machine-2"].module_slots = 0
+end
+
+data.raw["assembling-machine"]["assembling-machine-2"].crafting_speed_quality_multiplier = {["normal"] = 0.5, ["rare"] = 0.75, ["legendary"] = 1.25}
+data.raw["assembling-machine"]["assembling-machine-2"].quality_affects_module_slots = true
+data.raw["assembling-machine"]["assembling-machine-2"].module_slots_quality_bonus = {["normal"] = 0, ["rare"] = 2, ["legendary"] = 4}
+data.raw["assembling-machine"]["assembling-machine-2"].quality_affects_energy_usage = true
+data.raw["assembling-machine"]["assembling-machine-2"].energy_usage_quality_multiplier = {["normal"] = 1, ["rare"] = 2, ["legendary"] = 5}
+
 -- Change assembling mashine tech icon
 data.raw["technology"]["automation"].icon = "__underhaulV2__/graphics/technology/blue_automation.png"
+
 
 -- Remove discharge defense
 Tech:get("discharge-defense-equipment"):disable()

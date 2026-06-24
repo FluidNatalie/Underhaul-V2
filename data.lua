@@ -5,3 +5,8 @@ require("__underhaulV2__.vanilla_files.alternative_recipes")
 require("__underhaulV2__.vanilla_files.bonus_technologies")
 -- Data File
 require("__underhaulV2__.vanilla_files.vanilla_data")
+
+if mods["quality"] then
+-- Quality Compat File
+require("__underhaulV2__.compat_files.quality")
+end

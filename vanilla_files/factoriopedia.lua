@@ -6,6 +6,7 @@ data.raw.technology["speed-module-3"].localised_description = {"technology-descr
 data.raw["item"]["iron-stick"].hidden = true
 data.raw["recipe"]["iron-stick"].hidden = true
 data.raw["fluid"]["lubricant"].hidden = true
+data.raw["recipe"]["lubricant"].hidden = true
 --data.raw["recipe"]["lubricant-barrel"].hidden = true        --made in data updates, need to hide them there
 --data.raw["recipe"]["empty-lubricant-barrel"].hidden = true  --made in data updates, need to hide them there
 
@@ -123,9 +124,10 @@ data.raw["furnace"]["stone-furnace"].next_upgrade = nil
 
 -- data.raw["item"]["utility-science-pack"].hidden = true
 data.raw["recipe"]["utility-science-pack"].hidden = true
-data.raw["tool"]["utility-science-pack"].hidden = true
+data.raw["item"]["utility-science-pack"].hidden = true
 
--- data.raw["item"]["railgun"].hidden = true
+if mods["kry-crash-site-settings"]  then
+    -- data.raw["item"]["railgun"].hidden = true
 data.raw["recipe"]["railgun"].hidden = true
 data.raw["gun"]["railgun"].hidden = true
 data.raw["ammo-category"]["railgun"].hidden = true
@@ -135,6 +137,8 @@ data.raw["explosion"]["railgun-beam"].hidden = true
 data.raw["container"]["big-ship-wreck-1"].hidden = true
 data.raw["container"]["big-ship-wreck-2"].hidden = true
 data.raw["container"]["big-ship-wreck-3"].hidden = true
+end
+
 
 ------------------------------------------------------------------------------------------------------------------------
 -- TECHNOLOGY HIDDING ---- TECHNOLOGY HIDDING ---- TECHNOLOGY HIDDING ---- TECHNOLOGY HIDDING ---- TECHNOLOGY HIDDING --
